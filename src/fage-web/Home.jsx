@@ -58,7 +58,7 @@ const Home = () => {
               >
                 <div className="player-user-name-group">
                   <span className="player-account-type">[GUEST]</span>
-                  <span className="hello-username">PlayerUserName</span>
+                  <span className="hello-username">Developer.jisu</span>
                 </div>
               </motion.div>
 
