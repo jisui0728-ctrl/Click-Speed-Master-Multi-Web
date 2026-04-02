@@ -1,0 +1,147 @@
+@font-face {
+  font-family: neon;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
+}
+
+.settings-fage-popup {
+  position: fixed;
+  transform: translate(-50%, -50%);
+
+  min-width: 395px;
+  max-width: min(60vw, 720px);
+  max-height: min(85vh, 520px);
+
+  background: rgba(30, 38, 51, 0.72);
+  backdrop-filter: blur(10px);
+
+  border-radius: 15px;
+  padding: clamp(16px, 3vw, 28px);
+
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vh, 20px);
+
+  overflow: hidden; /*팝업 영역에서 요소가 벗어나면 숨김.*/
+  z-index: 9999;
+
+  box-shadow:
+  inset 0 1px 1px rgba(255, 255, 255, 0.15),
+  inset 0 -1px 2px rgba(0, 0, 0, 0.3),
+  0 8px 24px rgba(0, 0, 0, 0.35)
+  0 10px 100px rgba(0,0,0,0.3);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.settings-fage-popup-background {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.settings-fage-popup-exit {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    outline: none;
+    right: 5px;
+    top: 5px;
+}
+
+.settings-fage-popup-exit:hover {
+    color: #f87171;
+    outline: none;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.settings-main-title-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.settings-section-title {
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  opacity: 0.75;
+}
+
+.settings-main-title {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: neon;
+    letter-spacing: 1px;
+    opacity: 0.75;
+}
+
+.section-title-group1 {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+
+.log-out-delete-account-button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 7px;
+}
+
+.log-out-button {
+  width: 100%;
+  padding: clamp(12px, 2.5vw, 16px) 0;
+  border-radius: 20px;
+  
+  border: 5px solid #3f3f46;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  
+  cursor: pointer;
+  
+  transition: all 0.25s ease;
+
+  background: rgba(220, 38, 38, 0.39); /* red-ish */
+  backdrop-filter: blur(12px);
+  outline: none;
+
+  border: 2px solid rgba(220, 38, 38, 0.55);
+
+  color: #ffe4e6; /* 연한 핑크/화이트 */
+
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.35),
+    0 12px 36px rgba(220, 38, 38, 0.45);
+}
+
+.log-out-button:hover {
+  background: rgba(220, 38, 38, 0.74);
+
+  border-color: rgba(239, 68, 68, 0.9); /* 조금 더 밝은 빨강 */
+  color: #fff0f2; /* 밝은 핑크화이트 */
+  outline: none;
+
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.45),
+    0 0 18px rgba(239, 68, 68, 0.6),
+    0 18px 48px rgba(220, 38, 38, 0.55);
+}
+
+.log-out-button:focus {
+  outline: none;
+}
+
+.log-out-delete-account-button-text {
+  font-size: clamp(10px, 2vw, 12px);
+  font-weight: bold;
+  letter-spacing: 0.04em;
+}

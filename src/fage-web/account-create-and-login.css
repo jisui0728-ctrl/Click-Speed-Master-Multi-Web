@@ -1,0 +1,204 @@
+@font-face {
+  font-family: neon;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
+}
+
+.guest-account-section-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(13px,1.5vw,20px); /*min:15px,max:20px*/
+    font-weight: bold;
+    font-family: neon;
+    gap: 3px;
+}
+
+.guest-player-name-input-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 15px;
+  display: flex;
+  flex-direction: column;
+  transform-origin: center;
+}
+
+.guest-player-name-input {
+  font-size: 12px;
+  font-weight: bold;
+  color: #aaa;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #fff; 
+  padding: 10px 0;
+  background: none;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.guest-player-name-input::placeholder {
+  color: #aaa;
+}
+
+.guest-player-name-input:focus {
+  outline: none;
+}
+
+.guest-player-name-input-span {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0%;  /* right로만 바꿔주면 오 - 왼 */
+  background-color: #666;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  transition: 0.5s;
+  z-index: 2;
+}
+
+.guest-player-name-input:focus ~ .guest-player-name-input-span , .guest-player-name-input:valid ~ .guest-player-name-input-span  {
+  width: 100%;
+}
+
+.guest-player-name-input-label {
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  color: #aaa;
+  font-size: clamp(10px,12px,13px);
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.guest-player-name-input:focus ~ .guest-player-name-input-label , .guest-player-name-input:valid ~ .guest-player-name-input-label {
+    bottom: clamp(27px,1.5vw,30px);
+    font-size: clamp(11px,1.5vw,13px);
+    font-weight: bold;
+    color: #666;
+    font-weight: bold;
+}
+
+.main-button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.main-button {
+  width: 100%;
+  padding: clamp(12px, 2.5vw, 18px) 0;
+  border-radius: 20px;
+  background: rgba(39, 39, 42, 0.8);
+  border: 5px solid #3f3f46;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease;
+}
+
+.main-button:hover {
+  border-color: #22d3ee;
+  color: #22d3ee;
+}
+
+.main-button:focus {
+  outline: none;
+}
+
+.main-button:disabled {
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+.main-button-text {
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: bold;
+  letter-spacing: 0.04em;
+}
+
+.checking-account-animation-container {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.checking-account-animation {
+  width: clamp(16px,2vw,20px);
+  height: clamp(16px,2vw,20px);
+  border: 2px solid rgba(255,255,255,0.2);
+  border-top: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.checking-account-text {
+  text-align: center;
+  font-size: clamp(16px,2vw,20px);
+  font-weight: bold;
+}
+
+/*태블릿 이상 (768px)*/
+@media (min-width: 768px) {
+   .main-button {
+    padding: clamp(14px, 2.8vw, 18px) 0;
+  }
+  
+  .checking-account-animation {
+    width: clamp(18px,2vw,22px);
+    height: clamp(18px,2vw,22px);
+  }
+
+  .checking-account-text { /*데스크탑 이상은 ui 깨짐 의미 없음.*/
+    font-size: clamp(18px, 2vw, 22px);
+  }
+   .guest-player-name-input-container {
+    max-width: 768px;
+  }
+
+  .guest-player-name-input {
+    font-size: clamp(15px, 1.5vw, 17px);
+    padding: clamp(10px, 1.2vw, 12px) 0 clamp(7px, 0.8vw, 9px) 0;
+  }
+
+  .guest-player-name-input-label {
+    font-size: clamp(13px, 1.2vw, 14px);
+    bottom: clamp(10px, 1.5vw, 12px);
+  }
+
+  .guest-player-name-input:focus ~ .guest-player-name-input-label , .guest-player-name-input:valid ~ .guest-player-name-input-label {
+    bottom: clamp(30px,1.5vw,35px);
+    font-size: clamp(11px,1.5vw,13px);
+  }
+}
+
+/*데스크탑 (1024px 이상)*/
+@media (min-width: 1024px) {
+  .main-button {
+    padding: clamp(16px, 3vw, 22px) 0;
+  }
+  
+  .guest-player-name-input-container {
+    max-width: 1024px;
+  }
+
+  .guest-player-name-input {
+    font-size: clamp(16px, 1.2vw, 18px);
+    padding: clamp(12px, 1vw, 14px) 0 clamp(8px, 0.8vw, 10px) 0;
+  }
+
+  .guest-player-name-input-label {
+    font-size: clamp(14px, 1vw, 15px);
+    bottom: clamp(12px, 1.2vw, 14px);
+  }
+
+  .guest-player-name-input:focus ~ .guest-player-name-input-label , .guest-player-name-input:valid ~ .guest-player-name-input-label {
+    bottom: clamp(35px,1.5vw,40px);
+    font-size: clamp(11px,1.5vw,13px);
+  }
+}
