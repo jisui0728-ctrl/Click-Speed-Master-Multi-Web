@@ -15,7 +15,7 @@ const Account_Create_And_Login_Fage = ({is_logeed_in}) => {
     
     //처음 접속시나 재접속 하는 동안(해당 기기의 게스트 계정 존재 여부 확인)의 기본값
     //테스트 하기 위해 임의로 값 변경 가능 (실제 이용시 기본값은 null로 할당)
-    const [guest_account_found,set_guest_account_found] = useState(true)
+    const [guest_account_found,set_guest_account_found] = useState(false)
 
     const get_guest_account_found = () => {  
         if (guest_account_found === true) {
@@ -35,80 +35,80 @@ const Account_Create_And_Login_Fage = ({is_logeed_in}) => {
              * --> yes 일때 기존 guest account로 자동 로그인 되고 게임 플레이 할 수 있는 버튼 페이지가 생김(home.jsx에서 상태 관리)
             */}
                 
-                {account_play_button_group && (
-                    <div>
-                        <motion.div
-                        initial={{ scale: 0.7, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0.9, opacity: 0 }}
-                        className="main-button-group"
-                        >
-                            <motion.button
-                            whileTap={{ scale: 0.95 }}
-                            whileHover={{ scale: 1.02 }}
-                            className="main-button"
-                            onClick={() => {
-                                if (guest_account_found === true) {
-                                    set_home_jsx_fage(true);
-                                    is_logeed_in();
-                                } else if (guest_account_found === null) {
-                                    set_checking_guest_account_fage(true);
-                                } else {
-                                    set_create_guest_account_fage(true);
-                                };
-                                set_account_play_button_group(false);
-                            }}
-                            >
-                                <User></User>
-                                <span className="main-button-text">GUEST PLAY {
-                                    //guest_account_found === null 이면 계정을 찾고 있는 중 이므로 이때는 [Checking account...] 을 반환 한다.
-                                   get_guest_account_found()
-                                }
-                                </span>
-                            </motion.button>
-                            <motion.button
-                            whileTap={{ scale: 0.95 }}
-                            whileHover={{ scale: 1.02 }}
-                            disabled={true}
-                            className="main-button"
-                            >
-                                <span className="main-button-text">example1</span>
-                            </motion.button>
-                            <motion.button
-                            whileTap={{ scale: 0.95 }}
-                            whileHover={{ scale: 1.02 }}
-                            disabled={true}
-                            className="main-button"
-                            >
-                                <span className="main-button-text">example2</span>
-                            </motion.button>
-                            
-                        </motion.div>
-                    </div>
-                )}
-                
-                {guest_account_found === true && home_jsx_fage === true && <h1>Hello,Home!</h1>}
-                {guest_account_found === null && checking_guest_account_fage === true && (
-                    <motion.div 
-                    className="checking-account-animation-container"
+            {account_play_button_group && (
+                <div>
+                    <motion.div
                     initial={{ scale: 0.7, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0.9, opacity: 0 }}
+                    className="main-button-group"
                     >
-                        <motion.div
-                        className="checking-account-animation"
-                        animate={{ rotate: 360 }}
-                        transition={{
-                        repeat: Infinity,
-                        duration: 1,
-                        ease: "linear",
+                        <motion.button
+                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.02 }}
+                        className="main-button"
+                        onClick={() => {
+                            if (guest_account_found === true) {
+                                set_home_jsx_fage(true);
+                                is_logeed_in();
+                            } else if (guest_account_found === null) {
+                                set_checking_guest_account_fage(true);
+                            } else {
+                                set_create_guest_account_fage(true);
+                            };
+                            set_account_play_button_group(false);
                         }}
-                        />
-                        <span className="checking-account-text">Checking Account...</span>
+                        >
+                            <User></User>
+                            <span className="main-button-text">GUEST PLAY {
+                                //guest_account_found === null 이면 계정을 찾고 있는 중 이므로 이때는 [Checking account...] 을 반환 한다.
+                                get_guest_account_found()
+                            }
+                            </span>
+                        </motion.button>
+                        <motion.button
+                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.02 }}
+                        disabled={true}
+                        className="main-button"
+                        >
+                            <span className="main-button-text">example1</span>
+                        </motion.button>
+                        <motion.button
+                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.02 }}
+                        disabled={true}
+                        className="main-button"
+                        >
+                            <span className="main-button-text">example2</span>
+                        </motion.button>
+                        
                     </motion.div>
-                )
-                }
-                {guest_account_found === false && create_guest_account_fage === true && <Create_Guest_Account_Fage></Create_Guest_Account_Fage>}                  
+                </div>
+            )}
+                
+            {guest_account_found === true && home_jsx_fage === true && <h1>Hello,Home!</h1>}
+            {guest_account_found === null && checking_guest_account_fage === true && (
+                <motion.div 
+                className="checking-account-animation-container"
+                initial={{ scale: 0.7, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                >
+                    <motion.div
+                    className="checking-account-animation"
+                    animate={{ rotate: 360 }}
+                    transition={{
+                    repeat: Infinity,
+                    duration: 1,
+                    ease: "linear",
+                    }}
+                    />
+                    <span className="checking-account-text">Checking Account...</span>
+                </motion.div>
+            )
+            }
+            {guest_account_found === false && create_guest_account_fage === true && <Create_Guest_Account_Fage></Create_Guest_Account_Fage>}                  
         </div>
     )
 };
@@ -116,7 +116,7 @@ const Account_Create_And_Login_Fage = ({is_logeed_in}) => {
 const Create_Guest_Account_Fage = () => {
     const [guest_player_name,set_guest_player_name] = useState('');
     const create_guest_account_button = guest_player_name.length > 0;
-  
+    
     return (
         <div>
             <motion.h3
