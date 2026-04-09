@@ -1,5 +1,5 @@
 import { motion, AnimatePresence, scale, DeprecatedLayoutGroupContext, } from "framer-motion";
-import { Play , Timer , Gamepad , Gamepad2 , X , Users , Settings , } from "lucide-react";
+import { Play , Timer , Gamepad , Gamepad2 , X , Users , Settings , ForkKnifeCrossed } from "lucide-react";
 import './UnratedPlay-ChoiceFage.css';
 import { useState } from "react";
 import {ClipLoader} from "react-spinners";
@@ -69,7 +69,7 @@ const UnratedPlay_ChoiceFage = ({isClose}) => {
                         >
                             <span className="match-making-spinners"></span>
                             <div className="match-making-text-container">
-                                <span className="match-making-tex">⚡</span>
+                                <span className="match-making-text">⚡</span>
                                 <span className="match-making-text">MATCH MAKING...</span>
                             </div>
                         </motion.div>

@@ -15,9 +15,20 @@ const Account_Create_And_Login_Fage = ({is_logeed_in}) => {
     
     //처음 접속시나 재접속 하는 동안(해당 기기의 게스트 계정 존재 여부 확인)의 기본값
     //테스트 하기 위해 임의로 값 변경 가능 (실제 이용시 기본값은 null로 할당)
-    const [guest_account_found,set_guest_account_found] = useState(false)
+    const [guest_account_found,set_guest_account_found] = useState(false);
 
-    const get_guest_account_found = () => {  
+    const get_guest_account_found_return_fage = () => {
+        if (guest_account_found === true) {
+            set_home_jsx_fage(true);
+            is_logeed_in();
+        } else if (guest_account_found === null) {
+            set_checking_guest_account_fage(true);
+        } else {
+            set_create_guest_account_fage(true);
+        };
+    }
+    
+    const get_guest_account_found_return_text = () => {  
         if (guest_account_found === true) {
             return '[An account already exists]';
         } else if (guest_account_found === null) {
@@ -48,21 +59,14 @@ const Account_Create_And_Login_Fage = ({is_logeed_in}) => {
                         whileHover={{ scale: 1.02 }}
                         className="main-button"
                         onClick={() => {
-                            if (guest_account_found === true) {
-                                set_home_jsx_fage(true);
-                                is_logeed_in();
-                            } else if (guest_account_found === null) {
-                                set_checking_guest_account_fage(true);
-                            } else {
-                                set_create_guest_account_fage(true);
-                            };
+                            get_guest_account_found_return_fage();
                             set_account_play_button_group(false);
                         }}
                         >
                             <User></User>
                             <span className="main-button-text">GUEST PLAY {
                                 //guest_account_found === null 이면 계정을 찾고 있는 중 이므로 이때는 [Checking account...] 을 반환 한다.
-                                get_guest_account_found()
+                                get_guest_account_found_return_text()
                             }
                             </span>
                         </motion.button>
@@ -106,8 +110,7 @@ const Account_Create_And_Login_Fage = ({is_logeed_in}) => {
                     />
                     <span className="checking-account-text">Checking Account...</span>
                 </motion.div>
-            )
-            }
+            )}
             {guest_account_found === false && create_guest_account_fage === true && <Create_Guest_Account_Fage></Create_Guest_Account_Fage>}                  
         </div>
     )
