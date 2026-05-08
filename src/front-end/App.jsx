@@ -1,4 +1,4 @@
-import Home from './fage-web/Home.jsx';
+import Home from './fage-web/home/components/Home.jsx';
 import './App.css'
 
 const app = () => {

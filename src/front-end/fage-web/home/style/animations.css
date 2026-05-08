@@ -1,0 +1,25 @@
+/* ════════════════════════════════════════════════════
+   키프레임 애니메이션
+════════════════════════════════════════════════════ */
+
+/* 배경 */
+@keyframes grid-drift  { from { background-position: 0 0 } to { background-position: 44px 44px } }
+@keyframes glow1       { from { transform: scale(1) translate(0,0);   opacity: .7  } to { transform: scale(1.2)  translate(24px,18px);  opacity: 1   } }
+@keyframes glow2       { from { transform: scale(1) translate(0,0);   opacity: .55 } to { transform: scale(1.18) translate(-18px,22px); opacity: .85 } }
+
+/* 텍스트 */
+@keyframes flicker     { 0%,89%,100% { opacity: 1 } 90% { opacity: .5 } 93% { opacity: 1 } 96% { opacity: .7 } }
+@keyframes slide-up    { from { opacity: 0; transform: translateY(14px) } to { opacity: 1; transform: translateY(0) } }
+
+/* 공용 */
+@keyframes pulse-dot   { 0%,100% { opacity: 1; transform: scale(1)   } 50% { opacity: .2; transform: scale(.6) } }
+@keyframes chip-in     { from { opacity: 0; transform: scale(.85) translateY(-6px) } to { opacity: 1; transform: scale(1) translateY(0) } }
+@keyframes spin        { to { transform: rotate(360deg) } }
+
+/* 매칭 화면 */
+@keyframes ring-pulse   { 0%   { transform: translate(-50%,-50%) scale(1);   opacity: .5 } 100% { transform: translate(-50%,-50%) scale(2.2); opacity: 0 } }
+@keyframes found-flash  { 0%,100% { box-shadow: 0 0 0 0    rgba(0,200,255,.4) } 50% { box-shadow: 0 0 0 18px rgba(0,200,255,0) } }
+@keyframes avatar-pulse { 0%,100% { opacity: .3; transform: scale(1) } 50% { opacity: .7; transform: scale(1.08) } }
+
+/* 티어 테마 (최상위 티어용, 현재 미사용) */
+@keyframes rgb-wave    { 0% { background-position: 0% 50% } 100% { background-position: 400% 50% } }

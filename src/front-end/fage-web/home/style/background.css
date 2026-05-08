@@ -1,0 +1,59 @@
+/* ════════════════════════════════════════════════════
+   CONTAINER & 배경 레이어
+════════════════════════════════════════════════════ */
+
+.main-container {
+  position: fixed; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg); overflow: hidden;
+}
+
+.bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,200,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,200,255,.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+  animation: grid-drift 28s linear infinite;
+  pointer-events: none; z-index: 0;
+}
+
+.bg-scanlines {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent, transparent 2px,
+    rgba(0,0,0,.06) 2px, rgba(0,0,0,.06) 3px
+  );
+  pointer-events: none; z-index: 0;
+}
+
+.bg-glow {
+  position: absolute; border-radius: 50%;
+  filter: blur(110px); pointer-events: none; z-index: 0;
+}
+.bg-glow--top {
+  width: 640px; height: 640px;
+  background: radial-gradient(circle, rgba(0,200,255,.11), transparent 70%);
+  top: -200px; left: -160px;
+  animation: glow1 11s ease-in-out infinite alternate;
+}
+.bg-glow--bottom {
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, rgba(139,92,246,.1), transparent 70%);
+  bottom: -140px; right: -100px;
+  animation: glow2 14s ease-in-out infinite alternate;
+}
+
+.bg-vignette {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,.72) 100%);
+  pointer-events: none; z-index: 0;
+}
+
+/* ── UI 코너 장식 ─────────────────────────────────── */
+.ui-corner { position: fixed; width: 20px; height: 20px; z-index: 200; pointer-events: none; }
+.ui-corner--tl { top: 8px;    left: 8px;   border-top:    2px solid rgba(0,200,255,.4); border-left:   2px solid rgba(0,200,255,.4); }
+.ui-corner--tr { top: 8px;    right: 8px;  border-top:    2px solid rgba(0,200,255,.4); border-right:  2px solid rgba(0,200,255,.4); }
+.ui-corner--bl { bottom: 8px; left: 8px;   border-bottom: 2px solid rgba(0,200,255,.4); border-left:   2px solid rgba(0,200,255,.4); }
+.ui-corner--br { bottom: 8px; right: 8px;  border-bottom: 2px solid rgba(0,200,255,.4); border-right:  2px solid rgba(0,200,255,.4); }

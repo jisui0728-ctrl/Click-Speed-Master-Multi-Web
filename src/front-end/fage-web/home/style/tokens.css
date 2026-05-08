@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+/* ── 디자인 토큰 ─────────────────────────────────── */
+:root {
+  --cyan:   #00c8ff;
+  --purple: #8b5cf6;
+  --amber:  #f59e0b;
+  --green:  #10b981;
+  --red:    #ef4444;
+  --bg:     #04060f;
+  --surface:rgba(255,255,255,.04);
+  --border: rgba(255,255,255,.08);
+  --text:   #f0f4ff;
+  --muted:  rgba(255,255,255,.38);
+  --font-d: 'Orbitron', sans-serif;
+  --font-b: 'Rajdhani', sans-serif;
+  --spring: cubic-bezier(0.34,1.56,0.64,1);
+
+  --sidebar-w:    clamp(90px, 15vw, 200px);
+  --sidebar-w-lg: clamp(140px, 16vw, 280px);
+  --tabbar-h:     64px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* 접근성 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
+}
+button:focus-visible { outline: 2px solid rgba(0,200,255,.65); outline-offset: 3px; }

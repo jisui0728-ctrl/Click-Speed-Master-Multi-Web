@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.15.0",
     "framer-motion": "^12.27.1",
     "lucide-react": "^0.562.0",
     "react": "^19.2.0",

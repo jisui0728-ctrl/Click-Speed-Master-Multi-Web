@@ -1,0 +1,13 @@
+/* ════════════════════════════════════════════════════
+   CLICK SPEED MASTER — index.css
+   각 파일을 의존 순서대로 import
+════════════════════════════════════════════════════ */
+
+@import './tokens.css';         /* 변수, 폰트, reset */
+@import './animations.css';     /* 키프레임 전체    */
+@import './background.css';     /* 배경 + 코너 장식 */
+@import './home.css';           /* 레이아웃, 로고, 버튼, 칩, 우측 패널 */
+@import './navTabBar.css';      /* 탭바 + 반응형 사이드바 (768 / 1024) */
+@import './gameModeModal.css';  /* 모달 백드롭 + 게임모드 선택 */
+@import './matchingScreen.css'; /* 매칭 중 오버레이 */
+@import './responsive.css';     /* 소형 기기 보정 (480 / 360) */

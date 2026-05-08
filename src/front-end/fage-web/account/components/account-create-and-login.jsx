@@ -1,7 +1,8 @@
 import { motion, } from "framer-motion";
 import { User , } from "lucide-react";
 import { useState } from "react";
-import './account-create-and-login.css'
+import { create_guest_account_api } from "../../../client/services/create_guest_account_api";
+import '../style/account-create-and-login.css'
 
 const Account_Create_And_Login_Fage = ({is_logeed_in}) => {
     // const [player_account_type,set_player_account_type] = useState(null);
@@ -15,7 +16,7 @@ const Account_Create_And_Login_Fage = ({is_logeed_in}) => {
     
     //처음 접속시나 재접속 하는 동안(해당 기기의 게스트 계정 존재 여부 확인)의 기본값
     //테스트 하기 위해 임의로 값 변경 가능 (실제 이용시 기본값은 null로 할당)
-    const [guest_account_found,set_guest_account_found] = useState(false);
+    const [guest_account_found,set_guest_account_found] = useState(true); //서버 측에서 생성 처리 완료시 true로 지정.
 
     const get_guest_account_found_return_fage = () => {
         if (guest_account_found === true) {
@@ -76,7 +77,7 @@ const Account_Create_And_Login_Fage = ({is_logeed_in}) => {
                         disabled={true}
                         className="main-button"
                         >
-                            <span className="main-button-text">example1</span>
+                            <span className="main-button-text">Google</span>
                         </motion.button>
                         <motion.button
                         whileTap={{ scale: 0.95 }}
@@ -84,7 +85,7 @@ const Account_Create_And_Login_Fage = ({is_logeed_in}) => {
                         disabled={true}
                         className="main-button"
                         >
-                            <span className="main-button-text">example2</span>
+                            <span className="main-button-text">Apple</span>
                         </motion.button>
                         
                     </motion.div>
@@ -119,9 +120,24 @@ const Account_Create_And_Login_Fage = ({is_logeed_in}) => {
 const Create_Guest_Account_Fage = () => {
     const [guest_player_name,set_guest_player_name] = useState('');
     const create_guest_account_button = guest_player_name.length > 0;
+
+    //front측에서 guest account 생성 api 호출 함수.
+    //front-end/api 파일에 있는 코드를 여기에 구현하여 통합.
+    const create_guest_account_function = async () => {
+        //server측에서 guest account 생성 처리 완료시 guest_account_fount 상태 변경 로직 추가 구현.
+        try {
+            const result = await create_guest_account_api(guest_player_name);
+            console.log(result);
+            //서비스 출시 시 계정 존재 여부 확인 api와 연동해서 guest_account_found 상태 변경 처리 구현 필요.
+        } catch (error) {
+            console.error(error);
+        }
+
+
+    };
     
     return (
-        <div>
+        <div className="guest-account-create-fage-container">
             <motion.h3
             className="guest-account-section-title"
             initial={{ scale: 0.7, opacity: 0 }}
@@ -138,7 +154,14 @@ const Create_Guest_Account_Fage = () => {
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             >
-                <input type="text" className="guest-player-name-input" id="guestPlayerNameInputLabel" value={guest_player_name} onChange={(e) => set_guest_player_name(e.target.value)} required/>
+                <input
+                type="text" 
+                className="guest-player-name-input" 
+                id="guestPlayerNameInputLabel" 
+                value={guest_player_name} 
+                onChange={(e) => set_guest_player_name(e.target.value)}
+                required
+                />
                 <label className="guest-player-name-input-label" htmlFor="guestPlayerNameInputLabel">Enter nickname. (Play to create guest account.)</label>
                 <span className="guest-player-name-input-span"></span>
             </motion.div>
@@ -153,6 +176,7 @@ const Create_Guest_Account_Fage = () => {
                 whileHover={{ scale: 1.02 }}
                 disabled={!create_guest_account_button}
                 className="main-button"
+                onClick={() => {create_guest_account_function()}}
                 >
                     <span className="main-button-text">CREATE GUEST ACCOUNT</span>  
                 </motion.button>

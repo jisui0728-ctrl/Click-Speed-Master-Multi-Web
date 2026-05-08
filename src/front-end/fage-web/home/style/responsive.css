@@ -1,0 +1,22 @@
+/* ════════════════════════════════════════════════════
+   반응형 — 소형 기기
+════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+  .main-wrapper     { padding: 0 14px 72px; }
+  .main-logo        { font-size: clamp(17px,6vw,24px); }
+  .main-button      { padding: 13px 15px; }
+  .main-button-text { font-size: 11px; }
+  .mode-grid        { grid-template-columns: repeat(2, 1fr); }
+  .time-grid        { grid-template-columns: repeat(5, 1fr); }
+  .mode-modal       { border-radius: 20px 20px 0 0; padding: 20px 16px 28px; }
+  .matching-card    { padding: 24px 18px; }
+  .nav-tab          { padding: 6px 8px; min-width: 44px; }
+  .nav-tab__label   { font-size: 9px; }
+}
+
+@media (max-width: 360px) {
+  .ranking-records-button-group { grid-template-columns: 1fr; }
+  .time-grid { grid-template-columns: repeat(3, 1fr); }
+  .mode-grid { grid-template-columns: repeat(2, 1fr); }
+}

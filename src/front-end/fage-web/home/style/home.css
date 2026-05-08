@@ -1,0 +1,347 @@
+/* ════════════════════════════════════════════════════
+   LAYOUT — Wrapper
+════════════════════════════════════════════════════ */
+
+/*이 rgb효과는 랭크 시스템에서 티어 테마에 적용 (최상위 티어 테마에 적용)*/
+/* .player-chip__account-type {
+  text-transform: uppercase;
+  background: linear-gradient(
+    45deg,
+    rgb(255, 0, 0),
+    rgb(255, 128, 0),
+    rgb(255, 255, 0),
+    rgb(0, 255, 0),
+    rgb(0, 255, 255),
+    rgb(0, 0, 255),
+    rgb(128, 0, 255),
+    rgb(255, 0, 255),
+    rgb(255, 0, 0)
+  );
+
+  background-size: 400% 100%;
+  background-clip: content-box;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: rgb-wave 5s linear infinite;
+}
+
+@keyframes rgb-wave {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 400% 50%;
+  }
+} */
+
+.main-wrapper {
+  position: relative; z-index: 10;
+  display: flex; flex-direction: column; align-items: center;
+  width: 100%; max-width: 520px; padding: 0 20px;
+  padding-bottom: 72px; /* NavBar 높이 확보 */
+}
+
+.logged-in-view {
+  display: flex; flex-direction: column; align-items: center;
+  width: 100%; animation: slide-up .45s ease both;
+}
+
+/* ════════════════════════════════════════════════════
+   로고
+════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: neon;
+  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
+}
+
+.logo-block { text-align: center; margin-bottom: 22px; }
+
+.main-logo {
+  font-family: neon;
+  font-size: clamp(20px,4.2vw,34px);
+  white-space: nowrap;
+  font-weight: bold; 
+  letter-spacing: .12em;
+  line-height: 1.15; 
+  
+  color: #426DFB;
+
+  text-shadow:
+    0 0 clamp(4px, 0.4vw, 8px)   rgba(66, 109, 251, 0.9),
+    0 0 clamp(8px, 1vw, 16px)    rgba(35, 86, 255, 0.85),
+    0 0 clamp(14px, 2vw, 28px)   rgba(35, 86, 255, 0.75),
+    0 0 clamp(22px, 3.5vw, 44px) rgba(35, 86, 255, 0.65),
+    0 0 clamp(32px, 5vw, 64px)   rgba(35, 86, 255, 0.5),
+    0 0 clamp(44px, 7vw, 90px)   rgba(35, 86, 255, 0.35);
+  filter: drop-shadow(0 0 20px rgba(35, 86, 255, 0.35));
+  animation: flux 3s linear infinite;
+
+  margin: 0;
+}
+
+@keyframes flux {
+  0%,
+  100% {
+    color: #28d7fe;
+
+    text-shadow:
+      0 0 2px #1041ff,
+      0 0 6px #1041ff,
+      0 0 12px #1041ff,
+      0 0 20px #1041ff;
+  }
+
+  50% {
+    color: #146c80;
+
+    text-shadow:
+      0 0 1px #082180,
+      0 0 4px #082180,
+      0 0 8px #082180;
+  }
+}
+
+.main-logo-highlight {
+  font-family: neon; 
+  font-size: clamp(12px,2.2vw,17px);
+  white-space: nowrap;
+  font-weight: bold; 
+  letter-spacing: .22em;
+
+  color: #ff3b3b;
+
+  text-shadow:
+    0 0 6px   rgba(255, 0, 0, 0.9),
+    0 0 14px  rgba(255, 0, 0, 0.85),
+    0 0 30px  rgba(255, 0, 0, 0.8),
+    0 0 60px  rgba(255, 0, 0, 0.75),
+    0 0 110px rgba(255, 0, 0, 0.65),
+    0 0 180px rgba(255, 0, 0, 0.45);
+    
+  animation: neonFlicker 2.8s infinite;
+}
+
+@keyframes neonFlicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 1;
+    text-shadow:
+      0 0 8px   rgba(255, 0, 0, 1),
+      0 0 18px  rgba(255, 0, 0, 0.95),
+      0 0 38px  rgba(255, 0, 0, 0.9),
+      0 0 80px  rgba(255, 0, 0, 0.85),
+      0 0 150px rgba(255, 0, 0, 0.7),
+      0 0 240px rgba(255, 0, 0, 0.5);
+  }
+
+  20%, 24%, 55% {
+    opacity: 0.7;
+    text-shadow:
+      0 0 4px  rgba(255, 0, 0, 0.5),
+      0 0 10px rgba(255, 0, 0, 0.4),
+      0 0 22px rgba(255, 0, 0, 0.35),
+      0 0 50px rgba(255, 0, 0, 0.3);
+  }
+
+  21%, 56% {
+    opacity: 0.4;
+    text-shadow:
+      0 0 2px rgba(255, 0, 0, 0.25);
+  }
+}
+
+/* 시즌 배지 */
+.season-badge {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+  padding: 4px 14px;
+  background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.28);
+  border-radius: 99px;
+  font-family: var(--font-d); font-size: 9px; font-weight: 700;
+  letter-spacing: .18em; color: var(--amber);
+}
+.season-badge__dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--amber); box-shadow: 0 0 6px var(--amber);
+  animation: pulse-dot 1.6s ease-in-out infinite; flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════════════
+   섹션 레이블 & 구분선
+════════════════════════════════════════════════════ */
+.section-label {
+  width: 100%; display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-d); font-size: 9px; font-weight: 700;
+  letter-spacing: .22em; color: rgba(255,255,255,.2); margin-bottom: 10px;
+}
+.section-label::before { content: ''; flex: 0 0 16px; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,.07), transparent); }
+.section-label::after  { content: ''; flex: 1;         height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.07)); }
+
+.section-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.08) 30%, rgba(255,255,255,.08) 70%, transparent);
+  margin: 4px 0 12px;
+}
+
+/* ════════════════════════════════════════════════════
+   플레이어 칩
+════════════════════════════════════════════════════ */
+.player-chip,
+.player-chip__desktop-version {
+  display: flex; align-items: center;
+  gap: clamp(6px,1vw,10px);
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--r-md);
+  padding: clamp(8px,1.3vw,12px) clamp(12px,1.8vw,16px);
+  cursor: pointer; transition: background .18s;
+}
+.player-chip__desktop-version { display: none; }
+.player-chip:hover { background: rgba(255,255,255,.09); }
+
+.player-chip__avatar {
+  width: clamp(24px,3vw,32px); height: clamp(24px,3vw,32px);
+  border-radius: var(--r-sm);
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  display: flex; align-items: center; justify-content: center;
+  font-size: clamp(12px,1.5vw,16px); flex-shrink: 0;
+}
+
+.player-chip__acccount-type-name-group {
+  display: flex; flex-direction: row; align-items: center; justify-content: center;
+  gap: clamp(3px,.5vw,5px);
+}
+.player-chip__name {
+  font-family: var(--font-d); font-size: clamp(10px,1.4vw,13px);
+  font-weight: 700; color: #fff; letter-spacing: .08em;
+}
+
+.player-chip__meta {
+  display: flex; align-items: center;
+  gap: clamp(3px,.5vw,5px); margin-top: 2px;
+}
+.player-chip__rank { font-size: clamp(10px,1.3vw,12px); color: var(--amber); font-family: var(--font-b); white-space: nowrap; }
+.player-chip__cps  { font-size: clamp(10px,1.3vw,12px); color: var(--muted); font-family: var(--font-b); white-space: nowrap; }
+.player-chip__dot  { width: clamp(2px,.4vw,3px); height: clamp(2px,.4vw,3px); border-radius: 50%; background: rgba(255,255,255,.2); }
+
+.player-chip__arrow { color: var(--muted); margin-left: auto; flex-shrink: 0; }
+
+/* ════════════════════════════════════════════════════
+   버튼 그룹
+════════════════════════════════════════════════════ */
+.button-group1    { display: flex; flex-direction: column; gap: 8px;  width: 100%; margin-bottom: 10px; }
+.information-group{ display: flex; flex-direction: column; gap: 8px;  width: 100%; margin-top: 10px; margin-bottom: 8px; }
+
+.main-button {
+  display: flex; align-items: center; gap: 13px;
+  width: 100%; padding: 15px 20px;
+  background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.09);
+  border-radius: 14px;
+  color: var(--text); font-family: var(--font-b); font-weight: 600; font-size: 14px;
+  cursor: pointer; position: relative; overflow: hidden; text-align: left;
+  transition: background .2s, border-color .2s, box-shadow .2s, transform .18s;
+}
+.main-button::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(255,255,255,0); transition: background .18s;
+  border-radius: inherit; pointer-events: none;
+}
+.main-button:hover::after { background: rgba(255,255,255,.035); }
+
+.main-button--active {
+  background: linear-gradient(135deg, rgba(0,200,255,.1), rgba(139,92,246,.07));
+  border-color: rgba(0,200,255,.3); box-shadow: 0 4px 22px rgba(0,200,255,.1);
+}
+.main-button--active::before {
+  content: ''; position: absolute; left: 0; top: 12%; bottom: 12%;
+  width: 3px; background: linear-gradient(180deg, var(--cyan), var(--purple)); border-radius: 0 2px 2px 0;
+}
+.main-button--active:hover {
+  background: linear-gradient(135deg, rgba(0,200,255,.16), rgba(139,92,246,.12));
+  border-color: rgba(0,200,255,.55);
+  box-shadow: 0 8px 34px rgba(0,200,255,.24), inset 0 0 0 1px rgba(0,200,255,.1);
+}
+.main-button--active svg { color: var(--cyan); }
+
+.main-button--disabled { cursor: not-allowed; opacity: .3 !important; }
+.main-button--disabled:hover { background: rgba(255,255,255,.03); border-color: rgba(255,255,255,.09); box-shadow: none; }
+
+.main-button-text {
+  font-family: var(--font-d); font-size: 12px; font-weight: 700;
+  letter-spacing: .08em; display: flex; align-items: center; gap: 10px; flex: 1;
+}
+
+.coming-soon-tag {
+  display: inline-block;
+  font-family: var(--font-b); font-size: 9px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,.3); background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1); border-radius: 99px;
+  padding: 2px 8px; white-space: nowrap; vertical-align: middle;
+}
+
+/* 대기 인원 뱃지 */
+.waiting-badge {
+  display: inline-flex; align-items: center; gap: 5px; margin-left: auto;
+  padding: 3px 10px;
+  background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.25);
+  border-radius: 99px;
+  font-family: var(--font-b); font-size: 10px; font-weight: 600;
+  letter-spacing: .04em; color: var(--green); white-space: nowrap; flex-shrink: 0;
+}
+.waiting-badge__dot {
+  width: 5px; height: 5px; border-radius: 50%; background: var(--green);
+  animation: pulse-dot 1.4s ease-in-out infinite; flex-shrink: 0;
+}
+
+.main-footer {
+  font-family: var(--font-b); font-size: 10px; letter-spacing: .22em;
+  text-transform: uppercase; color: rgba(255,255,255,.13);
+  text-align: center; margin-top: 4px;
+}
+
+/* ════════════════════════════════════════════════════
+   우측 패널 (1024px+)
+════════════════════════════════════════════════════ */
+.right-panel { display: none; } /* 기본 숨김 */
+
+.panel-card {
+  background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
+  border-radius: 14px; padding: 14px 15px;
+}
+.panel-card__title {
+  font-family: var(--font-d); font-size: 8px; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(255,255,255,.22); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.panel-card__title::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.06); }
+
+/* 서버 상태 */
+.server-list { display: flex; flex-direction: column; gap: 9px; }
+.server-item { display: flex; align-items: center; gap: 9px; }
+.server-dot  { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.server-dot--ok   { background: var(--green); box-shadow: 0 0 6px var(--green); animation: pulse-dot 2s infinite; }
+.server-dot--warn { background: var(--amber); box-shadow: 0 0 6px var(--amber); }
+.server-name  { flex: 1; font-size: 11px; font-family: var(--font-b); color: rgba(255,255,255,.6); }
+.server-ping  { font-family: var(--font-d); font-size: 10px; color: var(--green); }
+.server-bar-bg   { width: 48px; height: 3px; background: rgba(255,255,255,.06); border-radius: 2px; overflow: hidden; flex-shrink: 0; }
+.server-bar-fill { height: 100%; border-radius: 2px; background: var(--green); }
+
+/* 최근 기록 */
+.record-list { display: flex; flex-direction: column; gap: 8px; }
+.record-item { display: flex; align-items: center; gap: 9px; padding: 8px 10px; background: rgba(255,255,255,.02); border-radius: 9px; }
+.record-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+.record-icon--win  { background: rgba(16,185,129,.12); }
+.record-icon--lose { background: rgba(239,68,68,.1); }
+.record-info { flex: 1; }
+.record-mode   { font-family: var(--font-d); font-size: 9px; font-weight: 700; color: var(--text); }
+.record-time   { font-size: 9px; color: var(--muted); font-family: var(--font-b); margin-top: 1px; }
+.record-result { font-family: var(--font-d); font-size: 9px; font-weight: 700; }
+.record-result--win  { color: var(--green); }
+.record-result--lose { color: var(--red); }
+
+/* 랭킹 포인트 */
+.season-pass-bar-bg  { height: 5px; background: rgba(255,255,255,.06); border-radius: 3px; overflow: hidden; margin: 10px 0 6px; }
+.season-pass-bar-fill { height: 100%; background: linear-gradient(90deg, var(--purple), #c084fc); border-radius: 3px; box-shadow: 0 0 8px rgba(139,92,246,.5); }
+.season-pass-meta { display: flex; justify-content: space-between; font-size: 10px; font-family: var(--font-b); color: var(--muted); }
