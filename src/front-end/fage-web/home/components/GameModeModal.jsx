@@ -106,7 +106,7 @@ const GameModeModal = ({ onClose, onStartMatch }) => {
           onClick={() => canStart && onStartMatch({ mode: selectedMode, time: selectedTime })}
           whileTap={canStart ? { scale: 0.96 } : {}}
           whileHover={canStart ? { scale: 1.02 } : {}}
-          style={{ marginTop: 16 }}
+          style={{ marginTop: 16 , pointerEvents: canStart ? "auto" : "none"}}
         >
           {canStart ? (
             <>

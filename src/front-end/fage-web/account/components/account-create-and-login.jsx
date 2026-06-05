@@ -132,8 +132,6 @@ const Create_Guest_Account_Fage = () => {
         } catch (error) {
             console.error(error);
         }
-
-
     };
     
     return (

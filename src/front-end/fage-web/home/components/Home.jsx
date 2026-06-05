@@ -169,8 +169,12 @@ const Home = () => {
             >
               {/* 랭킹 포인트 */}
               <div className="panel-card season-pass-card">
+                {/**이곳에 티어 이미지 ui 구현. */}
                 <div className="panel-card__title">RANKING POINTS</div>
                 <div className="season-pass-bar-bg">
+                  {/**RP 포인트에서 클래스 season-pass-bar-fill 요소에서 
+                   * style 속성값에서 width에서 RP 포인트 변수로 값을 받아서 
+                   * 추후 서비스 시 속성값으로 사용. */}
                   <div className="season-pass-bar-fill" style={{ width: "42%" }} />
                 </div>
                 <div className="season-pass-meta">
@@ -188,6 +192,8 @@ const Home = () => {
       </div>
 
       {/* ── 오른쪽 사이드바 (1200px+) ── */}
+
+      {/**데스크탑 크기 대응 시 친구 기능,채팅 커뮤니티 등 ui 구현 예정.*/}
       {logged_in && (
         <aside className="right-panel">
           <div className="section-label">USER INFORMATION</div>
